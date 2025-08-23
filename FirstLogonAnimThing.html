@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Windows First Logon Animation</title>
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #000;
+    color: #fff;
+    font-family: "Segoe UI", "Segoe UI Variable", system-ui, sans-serif;
+}
+
+/* Circle animations */
+@keyframes circle1Path {
+    0% { transform: translate(0vw, 0vh); width: 30vw; height: 30vw; }
+    100% { transform: translate(0vw, -35vh); width: 80vw; height: 80vw; }
+}
+@keyframes circle2Path {
+    0% { transform: translate(0vw, 0vh); width: 20vw; height: 20vw; }
+    100% { transform: translate(-45vw, -40vh); width: 80vw; height: 80vw; }
+}
+@keyframes circle3Path {
+    0% { transform: translate(0vw, 0vh); width: 20vw; height: 20vw; }
+    100% { transform: translate(-55vw, -80vh); width: 120vw; height: 120vw; }
+}
+@keyframes fadeCircleIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Circle styles */
+.circles { position: relative; width: 100vw; height: 100vh; }
+.circle1, .circle2, .circle3 { position: absolute; border-radius: 100vw; }
+.circle1 { left:30vw; top:25vh; background: radial-gradient(50% 50% at 50% 50%, rgba(12,119,255,0.3) 15.62%, rgba(12,119,255,0) 100%); animation: circle1Path 12s infinite alternate, fadeCircleIn 1.332s ease-out; }
+.circle2 { left:45vw; top:30vh; background: radial-gradient(50% 50% at 50% 50%, rgba(0,56,255,0.3) 15.62%, rgba(12,119,255,0) 100%); animation: circle2Path 11.5s infinite alternate, fadeCircleIn 1.332s ease-out; }
+.circle3 { left:35vw; top:30vh; background: radial-gradient(50% 50% at 50% 50%, rgba(65,56,210,0.5) 15.62%, rgba(65,56,210,0) 100%); animation: circle3Path 15s infinite alternate, fadeCircleIn 1.332s ease-out; }
+
+/* Text styles */
+.text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+    left: 0;
+    top: 40vh;
+    font-size: 28pt;
+    opacity: 0;
+    animation: showText 12s infinite;
+}
+
+@keyframes showText {
+    0%, 25% { opacity: 1; }
+    30%, 100% { opacity: 0; }
+}
+
+/* Assign delays to sequence the messages */
+.instruction_text { animation-delay: 0s; }
+.instruction_text_small { font-size: 20pt; top:50vh; animation-delay: 3s; }
+.final_text { top:60vh; animation-delay: 6s; }
+.final_text_small { font-size: 20pt; top:70vh; animation-delay: 9s; }
+
+</style>
+</head>
+<body>
+<div class="circles">
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+</div>
+
+<!-- Text overlays -->
+<div class="text instruction_text">Welcome (instruction_text)</div>
+<div class="text instruction_text_small">Let's get things set up for you (instruction_text_small)</div>
+<div class="text final_text">You're ready to go! (final_text)</div>
+<div class="text final_text_small">Enjoy using your PC (final_text_small)</div>
+
+</body>
+</html>
